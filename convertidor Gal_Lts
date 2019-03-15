@@ -1,0 +1,42 @@
+#pruevas unitarias
+"""
+>>> conversion = convertidor('gal_lts',25)
+>>> conversion.RealizarConversion()
+>>> conversion.getResultadoConversion()
+94.6352945
+
+
+>>> conversion = convertidor('lts_gal',94.6352945)
+>>> conversion.RealizarConversion()
+>>> conversion.getResultadoConversion()
+25.0
+"""
+#nombre de la clase.
+class convertidor:
+    __cantidad = float(0)
+    __resultadoConversion = float(0)
+    __convertidor = ''
+#metodo constructor.
+    def __init__(self, convertidor, cantidad):
+        self.__convertidor = convertidor
+        self.__cantidad = cantidad
+
+        self.RealizarConversion()
+
+    def RealizarConversion(self):
+        #estructutra de control if:
+        if(self.__convertidor == 'gal_lts'):
+            self.__resultadoConversion = self.__cantidad * 3.78541178
+            #estructura de control elif:
+        elif(self.__convertidor == 'lts_gal'):
+            self.__resultadoConversion = self.__cantidad / 3.78541178
+        else:
+            self.__resultadoConversion = 'Invalido'
+
+    def getResultadoConversion(self):
+        return self.__resultadoConversion
+
+#instruccion para ejecutar las pruevas unitarias.
+if __name__== '__main__':
+    import doctest
+    doctest.testmod()
